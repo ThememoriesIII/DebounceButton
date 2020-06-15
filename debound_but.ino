@@ -1,5 +1,7 @@
 #include "debounce.h"
-DEBOUNCE button1(10,50);
+#define butpin 10
+#define delaydebounce 50 //millisec
+DEBOUNCE button1(butpin,delaydebounce);
 void setup()
 {
   Serial.begin(9600);
@@ -8,5 +10,7 @@ void setup()
 
 void loop() {
   if(button1.ReadState()==LOW)
-    Serial.printf("The button %d is pressed\n",BUTTON_PIN); 
+  {
+    Serial.printf("outside The button %d is pressed\n",butpin);
+  }
 }

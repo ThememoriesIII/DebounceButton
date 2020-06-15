@@ -16,7 +16,8 @@ class DEBOUNCE
   int buton_SteadyState = HIGH;
   int button_laststate = HIGH;
   int button_currentState;            
-  unsigned long lastDebounceTime = 0; 
+  unsigned long lastDebounceTime = 0;
+  int state_return; 
 
   public:
   DEBOUNCE(int pin,int time_debounce=0)
@@ -39,10 +40,15 @@ class DEBOUNCE
     if ((millis() - lastDebounceTime) > DEBOUNCE_DELAY) 
     {
       if(buton_SteadyState == HIGH && button_currentState == LOW)
+      {  
+        state_return = LOW;
+      }
+      else
       {
-        return LOW;   
+        state_return = HIGH;
       }
       buton_SteadyState = button_currentState;
+      return state_return;
     }
   }
 };
