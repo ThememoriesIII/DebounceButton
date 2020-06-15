@@ -7,5 +7,6 @@ void setup()
 }
 
 void loop() {
-  button1.ReadState();
+  if(button1.ReadState()==LOW)
+    Serial.printf("The button %d is pressed\n",BUTTON_PIN); 
 }

@@ -40,10 +40,9 @@ class DEBOUNCE
     {
       if(buton_SteadyState == HIGH && button_currentState == LOW)
       {
-        Serial.printf("The button %d is pressed\n",BUTTON_PIN);   
+        return LOW;   
       }
       buton_SteadyState = button_currentState;
-      return buton_SteadyState;
     }
   }
 };
